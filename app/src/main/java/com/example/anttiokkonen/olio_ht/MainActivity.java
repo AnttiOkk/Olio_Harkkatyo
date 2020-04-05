@@ -53,13 +53,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        button = (Button) findViewById(R.id.button2);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openAllActivityTransactions();
-            }
-        });
 
 
     }
@@ -68,8 +61,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, NewPaymentActivity.class);
         startActivity(intent);
     }
-    public void openAllActivityTransactions() {
-        Intent intent = new Intent(this, AllTransactionsActivity.class);
-        startActivity(intent);
-    }
+
 }
