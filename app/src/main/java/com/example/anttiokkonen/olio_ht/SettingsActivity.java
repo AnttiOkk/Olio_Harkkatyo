@@ -3,11 +3,11 @@ package com.example.anttiokkonen.olio_ht;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class NewPaymentActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_payment);
+        setContentView(R.layout.activity_settings);
     }
 }

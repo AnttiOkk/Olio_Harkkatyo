@@ -12,44 +12,45 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    private Button button;
-
+    private Button button1;
+    private Button button2;
+    private Button button3;
+    private Button button4;
     private TextView mTextMessage;
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
-            }
-            return false;
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        button = (Button) findViewById(R.id.button4);
-        button.setOnClickListener(new View.OnClickListener() {
+        button1 = (Button) findViewById(R.id.button4);
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openActivityNewPayment();
+            }
+        });
+
+        button2 = (Button) findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivityAllTransactions();
+            }
+        });
+        button3 = (Button) findViewById(R.id.button);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivityNewAccount();
+            }
+        });
+        button4 = (Button) findViewById(R.id.button3);
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivitySettings();
             }
         });
 
@@ -59,6 +60,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void openActivityNewPayment() {
         Intent intent = new Intent(this, NewPaymentActivity.class);
+        startActivity(intent);
+    }
+    public void openActivityAllTransactions() {
+        Intent intent = new Intent(this, TransactionActivity.class);
+        startActivity(intent);
+    }
+    public void openActivityNewAccount() {
+        Intent intent = new Intent(this, CreateAccountActivity.class);
+        startActivity(intent);
+    }
+    public void openActivitySettings() {
+        Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 
