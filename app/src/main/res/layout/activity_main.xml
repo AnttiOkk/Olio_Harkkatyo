@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
@@ -14,9 +15,10 @@
         android:layout_marginBottom="24dp"
         android:text="Uusi Maksu"
         app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.918"
-        tools:layout_editor_absoluteX="135dp" />
+        app:layout_constraintVertical_bias="0.834" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
@@ -37,24 +39,28 @@
         android:layout_marginBottom="56dp"
         android:text="Luo tili"
         app:layout_constraintBottom_toTopOf="@+id/button3"
-        tools:layout_editor_absoluteX="135dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="150dp"
         android:layout_height="70dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="48dp"
         android:text="Tilitapahtumat"
         app:layout_constraintBottom_toTopOf="@+id/button"
-        tools:layout_editor_absoluteX="135dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="150dp"
         android:layout_height="70dp"
-        android:layout_marginBottom="116dp"
         android:text="Asetukset"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
-        tools:layout_editor_absoluteX="135dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.785" />
 
 </android.support.constraint.ConstraintLayout>
