@@ -2,6 +2,7 @@ package com.example.anttiokkonen.olio_ht;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.TransactionTooLargeException;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivityTransactions();
+                openAllActivityTransactions();
             }
         });
 
@@ -67,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, NewPaymentActivity.class);
         startActivity(intent);
     }
-    public void openActivityTransactions() {
-        Intent intent = new Intent(this, TransactionsActivity.class);
+    public void openAllActivityTransactions() {
+        Intent intent = new Intent(this, AllTransactionsActivity.class);
         startActivity(intent);
     }
 }
