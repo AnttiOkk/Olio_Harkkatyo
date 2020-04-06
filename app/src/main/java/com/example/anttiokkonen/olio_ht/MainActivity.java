@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
                 openActivityNewPayment();
             }
         });
-
         button2 = (Button) findViewById(R.id.button2);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
