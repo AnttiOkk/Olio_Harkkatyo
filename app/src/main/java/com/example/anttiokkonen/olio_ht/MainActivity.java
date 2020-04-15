@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private Button button1;
-    private Button button2;
     private Button button3;
     private Button button4;
     private TextView mTextMessage;
@@ -29,13 +28,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openActivityNewPayment();
-            }
-        });
-        button2 = (Button) findViewById(R.id.button2);
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivityAllTransactions();
             }
         });
         button3 = (Button) findViewById(R.id.button);
@@ -59,10 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void openActivityNewPayment() {
         Intent intent = new Intent(this, NewPaymentActivity.class);
-        startActivity(intent);
-    }
-    public void openActivityAllTransactions() {
-        Intent intent = new Intent(this, TransactionActivity.class);
         startActivity(intent);
     }
     public void openActivityNewAccount() {
