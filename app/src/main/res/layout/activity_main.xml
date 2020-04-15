@@ -13,8 +13,10 @@
         android:id="@+id/button4"
         android:layout_width="150dp"
         android:layout_height="70dp"
-        android:text="Uusi Maksu/Tilitapahtumat"
+        android:layout_marginTop="52dp"
+        android:text="Uusi Maksu/Tilitapahtumat!"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
