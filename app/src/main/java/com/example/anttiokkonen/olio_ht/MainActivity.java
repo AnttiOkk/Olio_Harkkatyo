@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private Button button1;
+    private Button button2;
     private Button button3;
     private Button button4;
     private TextView mTextMessage;
@@ -50,16 +51,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openActivityNewPayment() {
-        Intent intent = new Intent(this, NewPaymentActivity.class);
-        startActivity(intent);
+        Intent intent1 = new Intent(this, NewPaymentActivity.class);
+        startActivity(intent1);
+
     }
     public void openActivityNewAccount() {
-        Intent intent = new Intent(this, CreateAccountActivity.class);
-        startActivity(intent);
+        Intent intent3 = new Intent(this, CreateAccountActivity.class);
+        startActivity(intent3);
     }
     public void openActivitySettings() {
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
+        Intent intent4 = new Intent(this, SettingsActivity.class);
+        startActivity(intent4);
     }
 
 }
