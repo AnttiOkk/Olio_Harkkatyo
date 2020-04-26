@@ -5,9 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.example.anttiokkonen.olio_ht.ui.User;
 
 public class SettingsActivity extends AppCompatActivity {
     private Button button1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +26,13 @@ public class SettingsActivity extends AppCompatActivity {
                 openActivityMain();
             }
         });
+
+
     }
     public void openActivityMain() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+
     }
 }
+
