@@ -13,6 +13,7 @@ import com.example.anttiokkonen.olio_ht.ui.User;
 public class SettingsActivity extends AppCompatActivity {
     private Button button1;
 
+    User user = new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,22 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 openActivityMain();
             }
+
         });
+
+        // Etunimet
+        EditText editText1 = (EditText) findViewById(R.id.FirstNames);
+        editText1.setText(user.getFirstnames(),TextView.BufferType.EDITABLE);
+        // Sukunimi
+        EditText editText2 = (EditText) findViewById(R.id.LastName);
+        editText2.setText(user.getLastname(),TextView.BufferType.EDITABLE);
+        // Syntymäaika
+        EditText editText3 = (EditText) findViewById(R.id.Birthday);
+        editText3.setText(user.getBday(),TextView.BufferType.EDITABLE);
+        // Osoite
+        EditText editText4 = (EditText) findViewById(R.id.Address);
+        editText4.setText(user.getAddress(),TextView.BufferType.EDITABLE);
+
 
 
     }

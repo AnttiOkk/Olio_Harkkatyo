@@ -1,4 +1,4 @@
-package com.example.anttiokkonen.olio_ht.ui;
+package com.example.anttiokkonen.olio_ht;
 
 public class Account {
     protected String accountName = "Kultapossu-tili";
@@ -47,3 +47,4 @@ public class Account {
 
     }
 }
+

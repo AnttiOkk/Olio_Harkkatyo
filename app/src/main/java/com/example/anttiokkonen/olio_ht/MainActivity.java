@@ -2,19 +2,15 @@ package com.example.anttiokkonen.olio_ht;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.TransactionTooLargeException;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private Button button1;
     private Button button3;
     private Button button4;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
