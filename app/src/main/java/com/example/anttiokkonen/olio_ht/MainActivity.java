@@ -13,10 +13,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private Button button1;
-    private Button button2;
     private Button button3;
     private Button button4;
-    private TextView mTextMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
