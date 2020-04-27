@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import java.io.Serializable;
+
 public class MainActivity extends AppCompatActivity {
     private Button button1;
     private Button button3;
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openActivityNewPayment() {
         Intent intent1 = new Intent(this, NewPaymentActivity.class);
+
         startActivity(intent1);
 
     }

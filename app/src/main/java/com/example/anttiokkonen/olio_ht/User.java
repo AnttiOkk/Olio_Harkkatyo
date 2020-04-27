@@ -1,4 +1,4 @@
-package com.example.anttiokkonen.olio_ht.ui;
+package com.example.anttiokkonen.olio_ht;
 
 import java.io.Serializable;
 
@@ -16,12 +16,16 @@ public class User implements Serializable {
         address = "Yliopistonkatu 34 A1";
     }
 
-    public User(String firstnames, String lastname, String bday, String address) {
-        this.firstnames = firstnames;
-        this.lastname = lastname;
-        this.bday = bday;
-        this.address = address;
-    }
+
+     /*
+     public User(String firstnames, String lastname, String bday, String address) {
+     this.firstnames = firstnames;
+     this.lastname = lastname;
+     this.bday = bday;
+     this.address = address;
+     }
+     */
+
 
     public String getFirstnames(){
         return firstnames;
@@ -34,6 +38,11 @@ public class User implements Serializable {
     }
     public String getAddress() {
         return address;
+    }
+
+    public void setFirstnames(String newFirstnames) {
+        this.firstnames = newFirstnames;
+
     }
 
 }
