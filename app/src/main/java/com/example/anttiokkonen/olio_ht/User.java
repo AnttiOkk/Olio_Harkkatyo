@@ -4,28 +4,23 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 
-    private String firstnames;
-    private String lastname;
-    private String bday;
-    private String address;
+    private String firstnames = "Matti Antero";
+    private String lastname = "Meikäläinen";
+    private String bday = "11.04.1990";
+    private String address = "Yliopistonkatu 34 A1";
 
-    public User() {
-        firstnames = "Matti Antero";
-        lastname = "Meikäläinen";
-        bday = "11.04.1990";
-        address = "Yliopistonkatu 34 A1";
-    }
+   /* firstnames = "Matti Antero";
+    lastname = "Meikäläinen";
+    bday = "11.04.1990";
+    address = "Yliopistonkatu 34 A1";
+    */
 
-
-     /*
-     public User(String firstnames, String lastname, String bday, String address) {
+     /*public User() {
      this.firstnames = firstnames;
      this.lastname = lastname;
      this.bday = bday;
      this.address = address;
-     }
-     */
-
+     }*/
 
     public String getFirstnames(){
         return firstnames;
@@ -42,7 +37,6 @@ public class User implements Serializable {
 
     public void setFirstnames(String newFirstnames) {
         this.firstnames = newFirstnames;
-
     }
 
 }

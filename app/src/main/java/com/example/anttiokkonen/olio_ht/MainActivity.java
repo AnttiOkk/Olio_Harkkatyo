@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import java.io.Serializable;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Serializable{
     private Button button1;
     private Button button3;
     private Button button4;
@@ -42,13 +42,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
 
     public void openActivityNewPayment() {
         Intent intent1 = new Intent(this, NewPaymentActivity.class);
-
         startActivity(intent1);
 
     }
@@ -62,3 +59,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+

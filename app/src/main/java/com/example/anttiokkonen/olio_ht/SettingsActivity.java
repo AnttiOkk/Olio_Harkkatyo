@@ -11,7 +11,9 @@ import android.widget.TextView;
 
 import com.example.anttiokkonen.olio_ht.User;
 
-public class SettingsActivity extends AppCompatActivity {
+import java.io.Serializable;
+
+public class SettingsActivity extends AppCompatActivity implements Serializable {
     private Button button1;
     private Button button2;
 
@@ -21,6 +23,7 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
 
         // Tulostaa EditTex -tekstikenttiin oliolle annetut vakio-arvot
         // Etunimet
@@ -36,7 +39,6 @@ public class SettingsActivity extends AppCompatActivity {
         // Osoite
         EditText editText4 = (EditText) findViewById(R.id.Address);
         editText4.setText(user.getAddress(),TextView.BufferType.EDITABLE);
-
 
 
         button1= (Button) findViewById(R.id.etusivu1);
