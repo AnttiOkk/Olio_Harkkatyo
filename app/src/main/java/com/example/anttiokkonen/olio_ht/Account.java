@@ -1,50 +1,56 @@
 package com.example.anttiokkonen.olio_ht;
 
+import java.util.ArrayList ;
+import java.io.PrintWriter ;
+import java.io.IOException ;
+import java.util.List;
+
 public class Account {
-    protected String accountName = "Kultapossu-tili";
-    protected String accountNumber = "FI 8000 1234 5678 90";
-    protected int money;
-    protected int credit;
+    public String accountName;
+    public String accountNumber;
+    public int credit;
+    public int money;
 
-    public void addMoney(int money) {
-        this.money += money;
-
-    }public void withdrawMoney(int money) {
-        this.money -= money;
-        // tarkistus ettei saldo mene pakkaselle
+    public Account(String accountName, String accountNumber, int credit, int money) {
+        this.accountName = accountName;
+        this.accountNumber = accountNumber;
+        this.credit = credit;
+        this.money = money;
     }
+
     public String getAccountName() {
         return accountName;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
     }
 
     public String getAccountNumber() {
         return accountNumber;
     }
 
-    public int getMoney() {
-        return money;
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
     public int getCredit() {
         return credit;
     }
 
-
-}class NormalAccount extends Account {
-
-    public NormalAccount(String accountNumber, int money) {
-        this.accountNumber = accountNumber;
-        this.money = money;
-        this.credit = 0;
-
-    }
-}class CreditAccount extends Account {
-
-    public CreditAccount(String accountNumber, int money, int credit) {
-        this.accountNumber = accountNumber;
-        this.money = money;
+    public void setCredit(int credit) {
         this.credit = credit;
+    }
 
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+    @Override
+    public String toString() {
+        return accountName;
     }
 }
-

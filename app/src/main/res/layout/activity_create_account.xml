@@ -57,13 +57,13 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
         android:text="MUOKKAA OLEMASSA OLEVAN TILIN TIETOJA"
-        app:layout_constraintBottom_toTopOf="@+id/spinner2"
+        app:layout_constraintBottom_toTopOf="@+id/spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/spinner"
         android:layout_width="325dp"
         android:layout_height="21dp"
         android:layout_marginBottom="16dp"
