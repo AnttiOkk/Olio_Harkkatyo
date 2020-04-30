@@ -12,14 +12,14 @@ public class SettingsActivity extends AppCompatActivity {
     private Button button1;
     private Button button2;
 
-    User user;
+    User user = new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        user = (User) getIntent().getSerializableExtra("user");
+        //user = (User) getIntent().getSerializableExtra("user");
 
         System.out.println(user.getFirstnames());
 
@@ -54,8 +54,15 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 // Etunimien muokkaus
+
+                //accountName = findViewById(R.id.editText3);
+                //
+                //String textContent = accountName.getText().toString();
+                //bank.getUser().addAccount(new Account(textContent, "FI 1337 5678 90", 100, 500));
+
                 EditText editText1 = (EditText) findViewById(R.id.FirstNames);
                 user.setFirstnames(editText1.getText().toString());
+
                 openActivityMain();
             }
         });

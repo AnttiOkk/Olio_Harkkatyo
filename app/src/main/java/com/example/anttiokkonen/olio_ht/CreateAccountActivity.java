@@ -42,8 +42,6 @@ public class CreateAccountActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //openActivityMain();
                 String textContent = accountName.getText().toString();
                 bank.getUser().addAccount(new Account(textContent, "FI 1337 5678 90", 100, 500));
             }
