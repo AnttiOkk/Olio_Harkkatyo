@@ -1,11 +1,12 @@
 package com.example.anttiokkonen.olio_ht;
 
+import java.io.Serializable;
 import java.util.ArrayList ;
 import java.io.PrintWriter ;
 import java.io.IOException ;
 import java.util.List;
 
-public class Account {
+public class Account implements Serializable {
     public String accountName;
     public String accountNumber;
     public int credit;

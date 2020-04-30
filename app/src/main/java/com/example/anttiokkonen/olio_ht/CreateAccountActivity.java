@@ -7,24 +7,30 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class CreateAccountActivity extends AppCompatActivity {
     private Button button1;
     private Button button2;
     private Button button6;
 
+    private EditText accountName;
+
+
+    private Bank bank = Bank.getInstance();
     private Spinner spinner;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
+        accountName = findViewById(R.id.editText3);
         button1= (Button) findViewById(R.id.etusivu3);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +42,10 @@ public class CreateAccountActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivityMain();
+
+                //openActivityMain();
+                String textContent = accountName.getText().toString();
+                bank.getUser().addAccount(new Account(textContent, "FI 1337 5678 90", 100, 500));
             }
         });
         button6 = (Button) findViewById(R.id.button6);
@@ -48,13 +57,13 @@ public class CreateAccountActivity extends AppCompatActivity {
         });
         spinner = findViewById(R.id.spinner);
 
-        List<Account> accountList = new ArrayList<>();
         Account account1 = new Account("KULTAPOSSU-TILI", "FI 1234 5678 90", 1000, 10200);
-        accountList.add(account1);
         Account account2 = new Account("ASP-TILI", "FI 2468 1357 90", 0, 18000);
-        accountList.add(account2);
 
-        ArrayAdapter<Account> adapter = new ArrayAdapter<Account>(this, android.R.layout.simple_spinner_item, accountList);
+        bank.getUser().addAccount(account1);
+        bank.getUser().addAccount(account2);
+
+        ArrayAdapter<Account> adapter = new ArrayAdapter<Account>(this, android.R.layout.simple_spinner_item, bank.getUser().getAccounts());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinner.setAdapter(adapter);
@@ -92,6 +101,8 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
     public void openCreateAndChangeActivity() {
         Intent intent2 = new Intent(this, CreateAndChangeAccountActivity.class);
+        Account acc = (Account) spinner.getSelectedItem();
+        intent2.putExtra("account", acc);
         startActivity(intent2);
     }
 }

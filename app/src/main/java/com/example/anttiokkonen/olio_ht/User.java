@@ -1,6 +1,7 @@
 package com.example.anttiokkonen.olio_ht;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class User implements Serializable {
 
@@ -8,6 +9,8 @@ public class User implements Serializable {
     private String lastname = "Meikäläinen";
     private String bday = "11.04.1990";
     private String address = "Yliopistonkatu 34 A1";
+
+    private ArrayList<Account> accounts = new ArrayList<Account>();
 
     public String getFirstnames(){
         return firstnames;
@@ -24,6 +27,14 @@ public class User implements Serializable {
 
     public void setFirstnames(String newFirstnames) {
         this.firstnames = newFirstnames;
+    }
+
+    public void addAccount(Account a) {
+        accounts.add(a);
+    }
+
+    public ArrayList<Account> getAccounts() {
+        return accounts;
     }
 
 }

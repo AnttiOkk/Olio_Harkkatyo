@@ -6,13 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import java.io.Serializable;
 
-public class MainActivity extends AppCompatActivity implements Serializable{
+public class MainActivity extends AppCompatActivity {
     private Button button1;
     private Button button3;
     private Button button4;
 
+    protected Account account;
+    protected User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +51,13 @@ public class MainActivity extends AppCompatActivity implements Serializable{
 
     }
     public void openActivityNewAccount() {
-        Intent intent3 = new Intent(this, CreateAccountActivity.class);
+        Intent intent3 = new Intent(MainActivity.this, CreateAccountActivity.class);
+        intent3.putExtra("account", account);
         startActivity(intent3);
     }
     public void openActivitySettings() {
-        Intent intent4 = new Intent(this, SettingsActivity.class);
+        Intent intent4 = new Intent(MainActivity.this, SettingsActivity.class);
+        intent4.putExtra("user", user);
         startActivity(intent4);
     }
 
