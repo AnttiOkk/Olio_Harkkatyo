@@ -18,10 +18,11 @@ public class CreateAccountActivity extends AppCompatActivity {
     private Button button6;
 
     private EditText accountName;
-
+    protected Account account;
 
     private Bank bank = Bank.getInstance();
     private Spinner spinner;
+
 
 
 
@@ -55,12 +56,6 @@ public class CreateAccountActivity extends AppCompatActivity {
         });
         spinner = findViewById(R.id.spinner);
 
-        Account account1 = new Account("KULTAPOSSU-TILI", "FI 1234 5678 90", 1000, 10200);
-        Account account2 = new Account("ASP-TILI", "FI 2468 1357 90", 0, 18000);
-
-        bank.getUser().addAccount(account1);
-        bank.getUser().addAccount(account2);
-
         ArrayAdapter<Account> adapter = new ArrayAdapter<Account>(this, android.R.layout.simple_spinner_item, bank.getUser().getAccounts());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -87,7 +82,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         int money = account.getMoney();
         int credit = account.getCredit();
 
-        String accountData = "TILIN NIMI: " + accountName + "\nTILINUMERO: " + accountNumber; //"\nRAHAA TILILLÄ: " + money + "\nTILILLÄ LUOTTOA: " + credit;
+        String accountData = "TILIN NIMI: " + accountName + "\nTILINUMERO: " + accountNumber;
 
         Toast.makeText(this, accountData, Toast.LENGTH_LONG).show();
     }
@@ -95,6 +90,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     public void openActivityMain() {
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("account",account);
         startActivity(intent);
     }
     public void openCreateAndChangeActivity() {

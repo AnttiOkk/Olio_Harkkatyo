@@ -15,11 +15,22 @@ public class MainActivity extends AppCompatActivity {
     protected Account account;
     protected User user;
 
+    private Bank bank = Bank.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        // OLETUSTILIEN LUONTI
+
+        Account account1 = new Account("KULTAPOSSU-TILI", "FI 1234 5678 90", 1000, 10200);
+        Account account2 = new Account("ASP-TILI", "FI 2468 1357 90", 0, 18000);
+        bank.getUser().addAccount(account1);
+        bank.getUser().addAccount(account2);
+
+        account = (Account) getIntent().getSerializableExtra("account");
 
         button1 = (Button) findViewById(R.id.button4);
         button1.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void openActivityNewPayment() {
         Intent intent1 = new Intent(this, NewPaymentActivity.class);
+        intent1.putExtra("account", account);
+        intent1.getSerializableExtra("account");
         startActivity(intent1);
 
     }

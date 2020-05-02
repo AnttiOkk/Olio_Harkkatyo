@@ -21,8 +21,6 @@ public class SettingsActivity extends AppCompatActivity {
 
         //user = (User) getIntent().getSerializableExtra("user");
 
-        System.out.println(user.getFirstnames());
-
         // Tulostaa EditTex -tekstikenttiin oliolle annetut vakio-arvot
         // Etunimet
         EditText editText1 = (EditText) findViewById(R.id.FirstNames);
@@ -37,7 +35,6 @@ public class SettingsActivity extends AppCompatActivity {
         // Osoite
         EditText editText4 = (EditText) findViewById(R.id.Address);
         editText4.setText(user.getAddress());
-
 
         button1= (Button) findViewById(R.id.etusivu1);
         button1.setOnClickListener(new View.OnClickListener() {

@@ -47,6 +47,7 @@ public class Account implements Serializable {
         return money;
     }
 
+
     public void setMoney(int money) {
         this.money = money;
     }
@@ -54,4 +55,5 @@ public class Account implements Serializable {
     public String toString() {
         return accountName;
     }
+
 }
