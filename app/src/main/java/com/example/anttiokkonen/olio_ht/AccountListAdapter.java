@@ -36,7 +36,7 @@ public class AccountListAdapter extends ArrayAdapter<Account> {
         int raha = getItem(position).getMoney();
         int credit = getItem(position).getCredit();
 
-        //Account account = new Account(tilinnimi, tilinro, raha, credit);
+        Account account = new Account(tilinnimi, tilinro, raha, credit);
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);

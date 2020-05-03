@@ -30,6 +30,9 @@ public class NewPaymentActivity extends AppCompatActivity {
         account = (Account) getIntent().getSerializableExtra("account");
 
         // Display all accounts
+        listView = (ListView) findViewById(R.id.listview);
+        AccountListAdapter adapter2 = new AccountListAdapter(this, R.layout.adapter_view_layout, bank.getUser().getAccounts());
+        mListView.setAdapter(adapter2);
 
 
         button1= (Button) findViewById(R.id.etusivu2);
@@ -64,11 +67,6 @@ public class NewPaymentActivity extends AppCompatActivity {
                 displayAccountDataWhenMoneyAdded(account);
             }
         });
-
-        listView = (ListView) findViewById(R.id.listview);
-        AccountListAdapter adapter2 = new AccountListAdapter(this, R.layout.adapter_view_layout, bank.getUser().getAccounts());
-        mListView.setAdapter(adapter2);
-
 
 
     }

@@ -28,6 +28,15 @@ public class User implements Serializable {
     public void setFirstnames(String newFirstnames) {
         this.firstnames = newFirstnames;
     }
+    public void setLastname(String newLastname) {
+        this.lastname = newLastname;
+    }
+    public void setBday(String newBday) {
+        this.bday = newBday;
+    }
+    public void setAddress(String newAddress) {
+        this.address = newAddress;
+    }
 
     public void addAccount(Account a) {
         accounts.add(a);

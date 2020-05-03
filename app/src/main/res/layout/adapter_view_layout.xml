@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -8,32 +9,34 @@
     <TextView
         android:gravity="center"
         android:textAlignment="center"
-        android:text="@string/textview21"
+        android:text="TextView21"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:id="@+id/textView21"
-        android:layout_weight="50" />
+        android:layout_weight="40"
+        tools:ignore="HardcodedText" />
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="50">
+        android:layout_weight="60">
 
         <TextView
-            android:layout_gravity="center"
-            android:text="@string/textview22"
+            android:gravity="center"
+            android:text="TextView22"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:id="@+id/textView22" />
+            android:id="@+id/textView22"
+            tools:ignore="HardcodedText" />
 
         <TextView
-            android:layout_gravity="center"
-            android:text="@string/textview23"
+            android:gravity="center"
+            android:text="TextView23"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:id="@+id/textView23"
-            />
+            tools:ignore="HardcodedText" />
     </LinearLayout>
 
 </LinearLayout>
