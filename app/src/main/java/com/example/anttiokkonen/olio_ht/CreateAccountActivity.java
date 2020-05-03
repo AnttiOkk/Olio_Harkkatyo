@@ -23,9 +23,6 @@ public class CreateAccountActivity extends AppCompatActivity {
     private Bank bank = Bank.getInstance();
     private Spinner spinner;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

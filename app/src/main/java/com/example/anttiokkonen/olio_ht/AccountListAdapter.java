@@ -2,24 +2,18 @@ package com.example.anttiokkonen.olio_ht;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextClock;
 import android.widget.TextView;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class AccountListAdapter extends ArrayAdapter<Account> {
-
     private static final String TAG = "AccountListAdapter";
     private Context mContext;
     int mResource;
-
 
 
     public AccountListAdapter(Context context, int resource, ArrayList<Account> accounts) {
@@ -27,7 +21,6 @@ public class AccountListAdapter extends ArrayAdapter<Account> {
         mContext = context;
         mResource = resource;
     }
-
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -44,7 +37,6 @@ public class AccountListAdapter extends ArrayAdapter<Account> {
         TextView tvAccountName = (TextView) convertView.findViewById(R.id.textView21);
         TextView tvMoney = (TextView) convertView.findViewById(R.id.textView22);
         TextView tvCredit = (TextView) convertView.findViewById(R.id.textView23);
-
 
         tvAccountName.setText(tilinnimi);
         tvCredit.setText(credit);

@@ -5,10 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -65,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
     public void openActivityNewPayment() {
         Intent intent1 = new Intent(this, NewPaymentActivity.class);
         intent1.putExtra("account", account);
-        intent1.getSerializableExtra("account");
         startActivity(intent1);
 
     }

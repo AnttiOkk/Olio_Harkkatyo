@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.844" />
 
     <Button
         android:id="@+id/etusivu2"
@@ -32,7 +32,7 @@
         android:id="@+id/divider2"
         android:layout_width="409dp"
         android:layout_height="1dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="28dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintBottom_toTopOf="@+id/textView9"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,9 +42,10 @@
         android:id="@+id/spinner2"
         android:layout_width="275dp"
         android:layout_height="20dp"
+        android:layout_marginBottom="28dp"
         android:backgroundTint="#009688"
         android:foregroundTint="#009688"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintBottom_toTopOf="@+id/textView13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -52,6 +53,7 @@
         android:id="@+id/ammountMoney"
         android:layout_width="105dp"
         android:layout_height="46dp"
+        android:layout_marginBottom="12dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/button7"
@@ -81,40 +83,52 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:text="TILITAPAHTUMAT"
-        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+        app:layout_constraintBottom_toTopOf="@+id/button8"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="#009688"
         android:text="@string/lis_tilille_rahat"
         app:layout_constraintBottom_toTopOf="@+id/divider2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="412dp"
-        android:layout_height="197dp"
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#009688"
+        android:text="TARKASTELE TILITAPAHTUMIA"
         app:layout_constraintBottom_toTopOf="@+id/etusivu2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.023"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <ListView
-            android:id="@+id/listview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="1dp"
-            android:background="#00009688"
-            android:backgroundTint="#00009688" />
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valitse tili josta haluat siirtää rahaa:"
+        app:layout_constraintBottom_toTopOf="@+id/spinner3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_width="275dp"
+        android:layout_height="20dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

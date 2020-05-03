@@ -8,7 +8,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -18,30 +17,26 @@ public class NewPaymentActivity extends AppCompatActivity {
     private Button button8;
     private Bank bank = Bank.getInstance();
     private Spinner spinner;
+    private Spinner spinner2;
     Account account;
     private EditText ammountMoney;
-    ListView listView;
 
-    ListView mListView = (ListView) findViewById(R.id.listview);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_payment);
         account = (Account) getIntent().getSerializableExtra("account");
 
-        // Display all accounts
-        listView = (ListView) findViewById(R.id.listview);
-        AccountListAdapter adapter2 = new AccountListAdapter(this, R.layout.adapter_view_layout, bank.getUser().getAccounts());
-        mListView.setAdapter(adapter2);
-
-
-        button1= (Button) findViewById(R.id.etusivu2);
+        button1 = (Button) findViewById(R.id.etusivu2);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openActivityMain();
             }
         });
+
+        // account where you want to put money
         spinner = findViewById(R.id.spinner2);
 
         ArrayAdapter<Account> adapter = new ArrayAdapter<Account>(this, android.R.layout.simple_spinner_item, bank.getUser().getAccounts());
@@ -51,29 +46,62 @@ public class NewPaymentActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Account account = (Account) parent.getSelectedItem();
-                displayAccountData(account);
+                Account account1 = (Account) parent.getSelectedItem();
+                displayAccountData(account1);
             }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        // Account where you want to transfer money
+        spinner2 = findViewById(R.id.spinner3);
+        spinner2.setAdapter(adapter);
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Account account2 = (Account) parent.getSelectedItem();
+                displayAccountData(account2);
+            }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
         ammountMoney = (EditText) findViewById(R.id.ammountMoney);
-        button7= (Button) findViewById(R.id.button7);
+        button7 = (Button) findViewById(R.id.button7);
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayAccountDataWhenMoneyAdded(account);
+
+                // EditText Variable value
+
             }
         });
 
+        button8 = (Button) findViewById(R.id.button8);
+        button8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivityTransactions();
+            }
+        });
 
     }
+
     // MAINACTIVITYN AVAAMINEN
     public void openActivityMain() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    // TRANSACTIONSACTIVITYN AVAAAMINEN
+    public void openActivityTransactions() {
+        Intent intent2 = new Intent(this, TransactionsActivity.class);
+        intent2.putExtra("account", account);
+        startActivity(intent2);
     }
 
     // VALITUN TILIN TIETOJEN TULOSTAMINEN
@@ -92,13 +120,9 @@ public class NewPaymentActivity extends AppCompatActivity {
         String accountName = account.getAccountName();
         int money = account.getMoney();
 
-        String newMoney = ammountMoney.getText().toString();
+        String accountData = "TILILLÄ: " + accountName + "\nTILILLÄ RAHAA: " + money;
 
-        if (ammountMoney != null) {
-            int finalValue = Integer.parseInt(newMoney);
-            money = money + finalValue;
-            String accountData = "TILIN NIMI: " + accountName + "\nTILILLE LISÄTTY RAHAA: " + finalValue + "\nTILILLÄ RAHAA LISÄYKSEN JÄLKEEN: " + money;
-            Toast.makeText(this, accountData, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, accountData, Toast.LENGTH_LONG).show();
         }
-    }
 }
+
