@@ -6,4 +6,12 @@
     <string name="title_activity_new_payment">NewPaymentActivity</string>
     <string name="title_activity_transactions">TransactionsActivity</string>
     <string name="title_activity_all_transactions">ActivityAllTransactions</string>
+    <string name="uusi_maksu">UUSI MAKSU</string>
+    <string name="etusivulle">ETUSIVULLE</string>
+    <string name="valitse_tilii_jolle_haluat_lis_t_rahaa">Valitse tilii jolle haluat lisätä rahaa:</string>
+    <string name="summa_jonka_haluat_lis_t_tilille">Summa jonka haluat lisätä tilille:</string>
+    <string name="lis_tilille_rahat">Lisää Tilille Rahat</string>
+    <string name="textview21">TextView21</string>
+    <string name="textview22">TextView22</string>
+    <string name="textview23">TextView23</string>
 </resources>

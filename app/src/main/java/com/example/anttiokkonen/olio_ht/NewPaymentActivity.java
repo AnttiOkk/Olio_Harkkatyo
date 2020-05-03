@@ -21,6 +21,8 @@ public class NewPaymentActivity extends AppCompatActivity {
     Account account;
     private EditText ammountMoney;
     ListView listView;
+
+    ListView mListView = (ListView) findViewById(R.id.listview);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +66,9 @@ public class NewPaymentActivity extends AppCompatActivity {
         });
 
         listView = (ListView) findViewById(R.id.listview);
+        AccountListAdapter adapter2 = new AccountListAdapter(this, R.layout.adapter_view_layout, bank.getUser().getAccounts());
+        mListView.setAdapter(adapter2);
+
 
 
     }

@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -13,9 +17,11 @@ public class MainActivity extends AppCompatActivity {
     private Button button4;
 
     protected Account account;
+
     protected User user;
 
     private Bank bank = Bank.getInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         // OLETUSTILIEN LUONTI
-
         Account account1 = new Account("KULTAPOSSU-TILI", "FI 1234 5678 90", 1000, 10200);
         Account account2 = new Account("ASP-TILI", "FI 2468 1357 90", 0, 18000);
+
         bank.getUser().addAccount(account1);
         bank.getUser().addAccount(account2);
 
