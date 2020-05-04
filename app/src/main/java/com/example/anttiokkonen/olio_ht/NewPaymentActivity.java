@@ -36,7 +36,9 @@ public class NewPaymentActivity extends AppCompatActivity {
             }
         });
 
-        // account where you want to put money
+        
+        // TILI JOHON HALUAT LAITTAA RAHAA
+        // NÄYTTÄÄ TILIT JOISSA ON SWITCH2 ASENTO = TRUE, EI NÄYTÄ TILEJÄ, JOISSA SWITCH2 = FALSE
         spinner = findViewById(R.id.spinner2);
 
         ArrayAdapter<Account> adapter = new ArrayAdapter<Account>(this, android.R.layout.simple_spinner_item, bank.getUser().getAccounts());
@@ -55,7 +57,8 @@ public class NewPaymentActivity extends AppCompatActivity {
             }
         });
 
-        // Account where you want to transfer money
+        // TILI, JOSTA HALUAT SIIRTÄÄ RAHAA
+        // NÄYTTÄÄ TILIT JOISSA SWITCH1 ASENTO = TRUE, EI NÄYTÄ TILEJÄ, JOISSA SWITCH1 = FALSE
         spinner2 = findViewById(R.id.spinner3);
         spinner2.setAdapter(adapter);
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

@@ -20,6 +20,8 @@ public class CreateAndChangeAccountActivity extends AppCompatActivity {
     private Switch switch1;
     private Switch switch2;
 
+    private Bank bank = Bank.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +51,10 @@ public class CreateAndChangeAccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                // SWITCHIN ASENNON PÄIVITTÄMINEN UUDEKSI OLION ARRVOKSI
+                // SWITCHIN ASENNON PÄIVITTÄMINEN UUDEKSI OLION ARVOKSI
+                boolean switch1value = switch1.isChecked();
+                System.out.println(switch1value);
+
                 account.setCanTransferMoney(switch1.isChecked());
                 account.setCanDepositMoney(switch2.isChecked());
                 openActivityMain();

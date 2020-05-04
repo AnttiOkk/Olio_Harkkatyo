@@ -11,8 +11,8 @@ public class Account implements Serializable {
     public String accountNumber;
     public int credit;
     public int money;
-    public Boolean canTransferMoney = true;
-    public Boolean canDepositMoney = true;
+    public Boolean canTransferMoney;
+    public Boolean canDepositMoney;
 
 
     public Account(String accountName, String accountNumber, int credit, int money, boolean canTransferMoney, boolean canDepositMoney) {
