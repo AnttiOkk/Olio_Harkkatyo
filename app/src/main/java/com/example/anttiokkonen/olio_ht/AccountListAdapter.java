@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 
 public class AccountListAdapter extends ArrayAdapter<Account> {
-    private static final String TAG = "AccountListAdapter";
     private Context mContext;
     int mResource;
 
@@ -20,6 +19,7 @@ public class AccountListAdapter extends ArrayAdapter<Account> {
         super(context, resource, accounts);
         mContext = context;
         mResource = resource;
+
     }
     @NonNull
     @Override
