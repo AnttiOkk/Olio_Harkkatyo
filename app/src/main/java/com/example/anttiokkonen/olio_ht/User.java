@@ -10,7 +10,7 @@ public class User implements Serializable {
     private String bday = "11.04.1990";
     private String address = "Yliopistonkatu 34 A1";
 
-    private ArrayList<Account> accounts = new ArrayList<Account>();
+    private ArrayList<Account> accounts = new ArrayList<>();
 
 
     public String getFirstnames(){

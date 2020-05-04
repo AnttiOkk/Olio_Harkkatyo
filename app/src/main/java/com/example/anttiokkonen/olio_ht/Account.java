@@ -11,12 +11,17 @@ public class Account implements Serializable {
     public String accountNumber;
     public int credit;
     public int money;
+    public Boolean canTransferMoney = true;
+    public Boolean canDepositMoney = true;
 
-    public Account(String accountName, String accountNumber, int credit, int money) {
+
+    public Account(String accountName, String accountNumber, int credit, int money, boolean canTransferMoney, boolean canDepositMoney) {
         this.accountName = accountName;
         this.accountNumber = accountNumber;
         this.credit = credit;
         this.money = money;
+        this.canTransferMoney = canTransferMoney;
+        this.canDepositMoney = canDepositMoney;
     }
 
     public String getAccountName() {
@@ -50,6 +55,22 @@ public class Account implements Serializable {
     public void setMoney(int money) {
         this.money = money;
     }
+    public Boolean getCanTransferMoney() {
+        return canTransferMoney;
+    }
+
+    public void setCanTransferMoney(Boolean canTransferMoney) {
+        this.canTransferMoney = canTransferMoney;
+    }
+
+    public Boolean getCanDepositMoney() {
+        return canDepositMoney;
+    }
+
+    public void setCanDepositMoney(Boolean canDepositMoney) {
+        this.canDepositMoney = canDepositMoney;
+    }
+
     @Override
     public String toString() {
         return accountName;

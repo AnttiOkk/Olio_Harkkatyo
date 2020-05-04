@@ -25,23 +25,38 @@ public class CreateAndChangeAccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_and_change_account);
 
+        account = (Account) getIntent().getSerializableExtra("account");
+
         accountName = findViewById(R.id.textView8);
         accountNumber = findViewById(R.id.textView10);
 
-        button5 = (Button) findViewById(R.id.button5);
-        button5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivityMain();
-            }
-        });
+        switch1 = (Switch) findViewById(R.id.switch1);
+        switch1.setChecked(account.getCanTransferMoney());
 
-        account = (Account) getIntent().getSerializableExtra("account");
+        switch2 = (Switch) findViewById(R.id.switch2);
+        switch2.setChecked(account.getCanDepositMoney());
+
 
         if (account != null) {
             accountName.append(account.getAccountName());
             accountNumber.append(account.getAccountNumber());
         }
+
+
+        // TIETOJEN MUOKKAAMINEN, TALLENTAMINEN JA PALUU ETUSIVULLE
+        button5 = (Button) findViewById(R.id.button5);
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // SWITCHIN ASENNON PÄIVITTÄMINEN UUDEKSI OLION ARRVOKSI
+                account.setCanTransferMoney(switch1.isChecked());
+                account.setCanDepositMoney(switch2.isChecked());
+                openActivityMain();
+            }
+        });
+
+
     }
     public void openActivityMain() {
         Intent intent = new Intent(this, MainActivity.class);
