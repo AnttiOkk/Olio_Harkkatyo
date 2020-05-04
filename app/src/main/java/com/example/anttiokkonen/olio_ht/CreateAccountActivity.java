@@ -28,6 +28,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
+
         accountName = findViewById(R.id.editText3);
         button1= (Button) findViewById(R.id.etusivu3);
         button1.setOnClickListener(new View.OnClickListener() {

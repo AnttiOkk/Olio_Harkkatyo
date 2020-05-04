@@ -35,10 +35,12 @@ public class AccountListAdapter extends ArrayAdapter<Account> {
         convertView = inflater.inflate(mResource, parent, false);
 
         TextView tvAccountName = (TextView) convertView.findViewById(R.id.textView21);
-        TextView tvMoney = (TextView) convertView.findViewById(R.id.textView22);
-        TextView tvCredit = (TextView) convertView.findViewById(R.id.textView23);
+        TextView tvAccountNumber = (TextView) convertView.findViewById(R.id.textView22);
+        TextView tvMoney = (TextView) convertView.findViewById(R.id.textView23);
+        TextView tvCredit = (TextView) convertView.findViewById(R.id.textView24);
 
         tvAccountName.setText(tilinnimi);
+        tvAccountNumber.setText(tilinro);
         tvCredit.setText(credit);
         tvMoney.setText(raha);
 

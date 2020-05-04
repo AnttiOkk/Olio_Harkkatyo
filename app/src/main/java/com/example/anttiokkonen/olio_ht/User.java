@@ -12,6 +12,7 @@ public class User implements Serializable {
 
     private ArrayList<Account> accounts = new ArrayList<Account>();
 
+
     public String getFirstnames(){
         return firstnames;
     }

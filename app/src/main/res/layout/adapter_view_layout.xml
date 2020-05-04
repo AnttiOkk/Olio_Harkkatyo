@@ -6,15 +6,32 @@
             android:layout_height="match_parent"
             android:weightSum = "100">
 
-    <TextView
-        android:gravity="center"
-        android:textAlignment="center"
-        android:text="TextView21"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:id="@+id/textView21"
-        android:layout_weight="40"
-        tools:ignore="HardcodedText" />
+        android:layout_height="wrap_content"
+        android:layout_weight="40">
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_weight="50"
+            android:gravity="center"
+            android:text="tilin nimi"
+            android:textAlignment="center"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_weight="50"
+            android:gravity="center"
+            android:text="tilinro"
+            android:textAlignment="center"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
@@ -23,19 +40,19 @@
         android:layout_weight="60">
 
         <TextView
-            android:gravity="center"
-            android:text="TextView22"
+            android:id="@+id/textView23"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:id="@+id/textView22"
+            android:gravity="center"
+            android:text="rahamäärä"
             tools:ignore="HardcodedText" />
 
         <TextView
-            android:gravity="center"
-            android:text="TextView23"
+            android:id="@+id/textView24"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:id="@+id/textView23"
+            android:gravity="center"
+            android:text="luotto"
             tools:ignore="HardcodedText" />
     </LinearLayout>
 

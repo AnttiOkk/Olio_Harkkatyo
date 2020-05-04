@@ -21,8 +21,6 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        //user = (User) getIntent().getSerializableExtra("user");
-
         // Tulostaa EditTex -tekstikenttiin oliolle annetut vakio-arvot
         // Etunimet
         EditText editText1 = (EditText) findViewById(R.id.FirstNames);
