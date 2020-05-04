@@ -29,6 +29,7 @@ public class CreateAndChangeAccountActivity extends AppCompatActivity {
 
         account = (Account) getIntent().getSerializableExtra("account");
 
+        // TILIN NIMEN JA TILINUMERON TULOSTAMINEN TEXTVIEW-KENTTIIN
         accountName = findViewById(R.id.textView8);
         accountNumber = findViewById(R.id.textView10);
 
@@ -38,7 +39,7 @@ public class CreateAndChangeAccountActivity extends AppCompatActivity {
         switch2 = (Switch) findViewById(R.id.switch2);
         switch2.setChecked(account.getCanDepositMoney());
 
-
+        // EHTO
         if (account != null) {
             accountName.append(account.getAccountName());
             accountNumber.append(account.getAccountNumber());
@@ -52,11 +53,10 @@ public class CreateAndChangeAccountActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 // SWITCHIN ASENNON PÄIVITTÄMINEN UUDEKSI OLION ARVOKSI
-                boolean switch1value = switch1.isChecked();
-                System.out.println(switch1value);
-
+                // Ei toimi...
                 account.setCanTransferMoney(switch1.isChecked());
                 account.setCanDepositMoney(switch2.isChecked());
+
                 openActivityMain();
             }
         });
