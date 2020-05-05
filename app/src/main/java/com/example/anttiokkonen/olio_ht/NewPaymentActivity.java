@@ -99,8 +99,8 @@ public class NewPaymentActivity extends AppCompatActivity {
                     acc1.setMoney((int) (acc1.getMoney()+ammountMoney2));
                     acc2.setMoney((int) (acc2.getMoney()-ammountMoney2));
 
-                    acc1.setLastPayment(-ammountMoney2);
-                    acc2.setLastPayment(+ammountMoney2);
+                    acc1.setLastPayment(ammountMoney2);
+                    acc2.setLastPayment(-ammountMoney2);
 
                     displayAccountDataWhenMoneyAdded(acc1);
                 }
