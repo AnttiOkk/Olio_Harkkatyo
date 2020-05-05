@@ -9,13 +9,13 @@ import java.util.List;
 public class Account implements Serializable {
     public String accountName;
     public String accountNumber;
-    public String credit;
-    public String money;
+    public int credit;
+    public int money;
     public Boolean canTransferMoney;
     public Boolean canDepositMoney;
 
 
-    public Account(String accountName, String accountNumber, String credit, String money, boolean canTransferMoney, boolean canDepositMoney) {
+    public Account(String accountName, String accountNumber, int credit, int money, boolean canTransferMoney, boolean canDepositMoney) {
         this.accountName = accountName;
         this.accountNumber = accountNumber;
         this.credit = credit;
@@ -40,19 +40,19 @@ public class Account implements Serializable {
         this.accountNumber = accountNumber;
     }
 
-    public String getCredit() {
+    public int getCredit() {
         return credit;
     }
 
-    public void setCredit(String credit) {
+    public void setCredit(int credit) {
         this.credit = credit;
     }
 
-    public String getMoney() {
+    public int getMoney() {
         return money;
     }
 
-    public void setMoney(String money) {
+    public void setMoney(int money) {
         this.money = money;
     }
     public Boolean getCanTransferMoney() {

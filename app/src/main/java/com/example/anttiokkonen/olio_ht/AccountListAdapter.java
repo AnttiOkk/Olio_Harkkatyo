@@ -27,8 +27,8 @@ public class AccountListAdapter extends ArrayAdapter<Account> {
     public View getView(int position, View convertView, ViewGroup parent) {
         String tilinnimi = getItem(position).getAccountName();
         String tilinro = getItem(position).getAccountNumber();
-        String raha = getItem(position).getMoney();
-        String credit = getItem(position).getCredit();
+        int raha = getItem(position).getMoney();
+        int credit = getItem(position).getCredit();
 
 
        // Account account = new Account(tilinnimi, tilinro, raha, credit);
@@ -43,8 +43,8 @@ public class AccountListAdapter extends ArrayAdapter<Account> {
 
         tvAccountName.setText(tilinnimi);
         tvAccountNumber.setText(tilinro);
-        tvCredit.setText(credit);
-        tvMoney.setText(raha);
+        tvCredit.setText(Integer.toString(credit));
+        tvMoney.setText(Integer.toString(raha));
 
         return convertView;
     }
