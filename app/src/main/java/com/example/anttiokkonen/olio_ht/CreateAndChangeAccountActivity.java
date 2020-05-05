@@ -34,19 +34,17 @@ public class CreateAndChangeAccountActivity extends AppCompatActivity {
         accountName = findViewById(R.id.textView8);
         accountNumber = findViewById(R.id.textView10);
 
-        final Switch switch1 = (Switch) findViewById(R.id.switch1);
-        switch1.setChecked(account.getCanDepositMoney());
-
-        final Switch switch2 = (Switch) findViewById(R.id.switch2);
-        switch2.setChecked(account.getCanTransferMoney());
-
-
         // EHTO
         if (account != null) {
             accountName.append(account.getAccountName());
             accountNumber.append(account.getAccountNumber());
         }
 
+        final Switch switch1 = (Switch) findViewById(R.id.switch1);
+        switch1.setChecked(account.getCanDepositMoney());
+
+        final Switch switch2 = (Switch) findViewById(R.id.switch2);
+        switch2.setChecked(account.getCanTransferMoney());
 
         // TIETOJEN MUOKKAAMINEN, TALLENTAMINEN JA PALUU ETUSIVULLE
         button5 = (Button) findViewById(R.id.button5);
