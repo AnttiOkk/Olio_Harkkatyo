@@ -85,12 +85,7 @@ public class NewPaymentActivity extends AppCompatActivity {
 
                 Account acc1 = (Account) spinner.getSelectedItem();
                 Account acc2 = (Account) spinner2.getSelectedItem();
-                double money1 = acc1.getMoney();
-                double money2 = acc2.getMoney();
 
-                System.out.println(money1);
-                System.out.println(money2);
-                System.out.println(ammountMoney2);
 
                 if (acc2.getMoney() > ammountMoney2) {
                     acc1.setMoney((int) (acc1.getMoney()+ammountMoney2));

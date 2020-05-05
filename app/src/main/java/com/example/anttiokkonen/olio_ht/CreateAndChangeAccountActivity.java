@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -33,11 +34,12 @@ public class CreateAndChangeAccountActivity extends AppCompatActivity {
         accountName = findViewById(R.id.textView8);
         accountNumber = findViewById(R.id.textView10);
 
-        switch1 = (Switch) findViewById(R.id.switch1);
-        switch1.setChecked(account.getCanTransferMoney());
+        final Switch switch1 = (Switch) findViewById(R.id.switch1);
+        switch1.setChecked(account.getCanDepositMoney());
 
-        switch2 = (Switch) findViewById(R.id.switch2);
-        switch2.setChecked(account.getCanDepositMoney());
+        final Switch switch2 = (Switch) findViewById(R.id.switch2);
+        switch2.setChecked(account.getCanTransferMoney());
+
 
         // EHTO
         if (account != null) {
@@ -53,10 +55,26 @@ public class CreateAndChangeAccountActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 // SWITCHIN ASENNON PÄIVITTÄMINEN UUDEKSI OLION ARVOKSI
-                // Ei toimi...
-                account.setCanTransferMoney(switch1.isChecked());
-                account.setCanDepositMoney(switch2.isChecked());
-
+                switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked) {
+                            account.setCanDepositMoney(true);
+                        }
+                        else {
+                            account.setCanDepositMoney(false);
+                        }
+                    }
+                });
+                switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked) {
+                            account.setCanTransferMoney(true);
+                        }
+                        else {
+                            account.setCanTransferMoney(false);
+                        }
+                    }
+                });
                 openActivityMain();
             }
         });
