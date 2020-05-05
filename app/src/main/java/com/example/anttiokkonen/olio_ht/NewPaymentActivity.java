@@ -110,7 +110,7 @@ public class NewPaymentActivity extends AppCompatActivity {
     // VALITUN TILIN TIETOJEN TULOSTAMINEN
     private void displayAccountData(Account account) {
         String accountName = account.getAccountName();
-        int money = account.getMoney();
+        String money = account.getMoney();
 
         String accountData = "TILIN NIMI: " + accountName + "\nTILILLÄ RAHAA: " + money;
 
@@ -121,7 +121,7 @@ public class NewPaymentActivity extends AppCompatActivity {
     // RAHAN LISÄYS JA PÄIVITETTYJEN TIETOJEN PÄIVITTÄMINEN
     private void displayAccountDataWhenMoneyAdded(Account account) {
         String accountName = account.getAccountName();
-        int money = account.getMoney();
+        String money = account.getMoney();
 
         String accountData = "TILILLÄ: " + accountName + "\nTILILLÄ RAHAA: " + money;
 

@@ -1,6 +1,7 @@
 package com.example.anttiokkonen.olio_ht;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,8 +27,9 @@ public class AccountListAdapter extends ArrayAdapter<Account> {
     public View getView(int position, View convertView, ViewGroup parent) {
         String tilinnimi = getItem(position).getAccountName();
         String tilinro = getItem(position).getAccountNumber();
-        int raha = getItem(position).getMoney();
-        int credit = getItem(position).getCredit();
+        String raha = getItem(position).getMoney();
+        String credit = getItem(position).getCredit();
+
 
        // Account account = new Account(tilinnimi, tilinro, raha, credit);
 
