@@ -11,10 +11,10 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
+
 public class TransactionsActivity extends AppCompatActivity {
 
     ListView listView;
-    ListView mListView = (ListView) findViewById(R.id.listview);
     private Bank bank = Bank.getInstance();
     Account account;
 
@@ -22,12 +22,11 @@ public class TransactionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transactions);
+        listView= (ListView) findViewById(R.id.listview);
 
         account = (Account) getIntent().getSerializableExtra("account");
 
-        // Display all accounts
-        listView = (ListView) findViewById(R.id.listview);
         AccountListAdapter adapter = new AccountListAdapter(this, R.layout.adapter_view_layout, bank.getUser().getAccounts());
-        mListView.setAdapter(adapter);
+        listView.setAdapter(adapter);
     }
 }

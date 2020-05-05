@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.sql.SQLOutput;
+
 public class NewPaymentActivity extends AppCompatActivity {
     private Button button1;
     private Button button7;
@@ -19,7 +21,7 @@ public class NewPaymentActivity extends AppCompatActivity {
     private Spinner spinner;
     private Spinner spinner2;
     Account account;
-    private EditText ammountMoney;
+    private EditText ammountMoney1;
 
 
     @Override
@@ -73,15 +75,31 @@ public class NewPaymentActivity extends AppCompatActivity {
             }
         });
 
-        ammountMoney = (EditText) findViewById(R.id.ammountMoney);
+        // RAHAN SIIRTÄMINEN TILIEN VÄLILLÄ
         button7 = (Button) findViewById(R.id.button7);
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //spinner.getSelectedItem()
+                ammountMoney1 = (EditText) findViewById(R.id.ammountMoney);
+                final double ammountMoney2 = Double.parseDouble(ammountMoney1.getText().toString());
 
-                // EditText Variable value
+                Account acc1 = (Account) spinner.getSelectedItem();
+                Account acc2 = (Account) spinner2.getSelectedItem();
+                double money1 = acc1.getMoney();
+                double money2 = acc2.getMoney();
 
+                System.out.println(money1);
+                System.out.println(money2);
+                System.out.println(ammountMoney2);
+
+                if (acc2.getMoney() > ammountMoney2) {
+                    acc1.setMoney((int) (acc1.getMoney()+ammountMoney2));
+                    acc2.setMoney((int) (acc2.getMoney()-ammountMoney2));
+                    displayAccountDataWhenMoneyAdded(acc1);
+                }
+                else {
+                    displayErrorMessege(acc1);
+                }
             }
         });
 
@@ -114,19 +132,31 @@ public class NewPaymentActivity extends AppCompatActivity {
         int money = account.getMoney();
 
         String accountData = "TILIN NIMI: " + accountName + "\nTILILLÄ RAHAA: " + money;
-
         Toast.makeText(this, accountData, Toast.LENGTH_LONG).show();
     }
 
 
-    // RAHAN LISÄYS JA PÄIVITETTYJEN TIETOJEN PÄIVITTÄMINEN
+    // RAHAN LISÄYS JA PÄIVITETTYJEN TIETOJEN PÄIVITTÄMINEN JOS ONNISTUU
     private void displayAccountDataWhenMoneyAdded(Account account) {
         String accountName = account.getAccountName();
         int money = account.getMoney();
+        final double ammountMoney3 = Double.parseDouble(ammountMoney1.getText().toString());
 
-        String accountData = "TILILLÄ: " + accountName + "\nTILILLÄ RAHAA: " + money;
 
+        String accountData = "TILILLE: " + accountName + "\nTILILLE LISÄTTIIN: " + ammountMoney3+"€"+ "\nTILILLÄ RAHAA: "+ money+"€";
         Toast.makeText(this, accountData, Toast.LENGTH_LONG).show();
         }
+
+    // RAHAN LISÄYS JA PÄIVITETTYJEN TIETOJEN PÄIVITTÄMINEN JOS ONNISTUU
+    private void displayErrorMessege(Account account) {
+        String accountName = account.getAccountName();
+        int money = account.getMoney();
+        final double ammountMoney3 = Double.parseDouble(ammountMoney1.getText().toString());
+
+
+        String accountData = "TILILLE " + accountName + "EI PYSTYTTY \nSIIRTÄMÄÄN "+ ammountMoney3+ "€, \nKOSKA TOISELLA TTILILLÄ EI \nRIITTÄNYT KATE.";
+        Toast.makeText(this, accountData, Toast.LENGTH_LONG).show();
+    }
+
 }
 
