@@ -14,13 +14,8 @@ public class CreateAndChangeAccountActivity extends AppCompatActivity {
 
     private Button button5;
     Account account;
-
     private TextView accountName;
     private TextView accountNumber;
-
-    private Switch switch1;
-    private Switch switch2;
-
     private Bank bank = Bank.getInstance();
 
     @Override
@@ -46,6 +41,31 @@ public class CreateAndChangeAccountActivity extends AppCompatActivity {
         final Switch switch2 = (Switch) findViewById(R.id.switch2);
         switch2.setChecked(account.getCanTransferMoney());
 
+        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    account.setCanDepositMoney(true);
+                    System.out.println("nappi on ON-Asennossa");
+                }
+                else {
+                    account.setCanDepositMoney(false);
+                    System.out.println("nappi on OFF-Asennossa");
+                }
+            }
+        });
+        switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    account.setCanTransferMoney(true);
+                    System.out.println("nappi on ON-Asennossa");
+                }
+                else {
+                    account.setCanTransferMoney(false);
+                    System.out.println("nappi on OFF-Asennossa");
+                }
+            }
+        });
+
         // TIETOJEN MUOKKAAMINEN, TALLENTAMINEN JA PALUU ETUSIVULLE
         button5 = (Button) findViewById(R.id.button5);
         button5.setOnClickListener(new View.OnClickListener() {
@@ -53,30 +73,9 @@ public class CreateAndChangeAccountActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 // SWITCHIN ASENNON PÄIVITTÄMINEN UUDEKSI OLION ARVOKSI
-                switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        if (isChecked) {
-                            account.setCanDepositMoney(true);
-                        }
-                        else {
-                            account.setCanDepositMoney(false);
-                        }
-                    }
-                });
-                switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        if (isChecked) {
-                            account.setCanTransferMoney(true);
-                        }
-                        else {
-                            account.setCanTransferMoney(false);
-                        }
-                    }
-                });
                 openActivityMain();
             }
         });
-
 
     }
     public void openActivityMain() {

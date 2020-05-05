@@ -28,7 +28,7 @@ public class AccountListAdapter extends ArrayAdapter<Account> {
         String tilinnimi = getItem(position).getAccountName();
         String tilinro = getItem(position).getAccountNumber();
         int raha = getItem(position).getMoney();
-        int credit = getItem(position).getCredit();
+        double viimeinenTilitapahtuma = getItem(position).getLastPayment();
 
 
         //Account account = new Account(tilinnimi, tilinro, raha, credit);
@@ -41,9 +41,10 @@ public class AccountListAdapter extends ArrayAdapter<Account> {
         TextView tvMoney = (TextView) convertView.findViewById(R.id.textView23);
         TextView tvCredit = (TextView) convertView.findViewById(R.id.textView24);
 
+
         tvAccountName.setText(tilinnimi);
         tvAccountNumber.setText(tilinro);
-        tvCredit.setText(Integer.toString(credit));
+        tvCredit.setText(Double.toString(viimeinenTilitapahtuma));
         tvMoney.setText(Integer.toString(raha));
 
         return convertView;

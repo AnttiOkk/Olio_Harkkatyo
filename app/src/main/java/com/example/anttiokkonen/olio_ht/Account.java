@@ -13,15 +13,17 @@ public class Account implements Serializable {
     public int money;
     public Boolean canTransferMoney;
     public Boolean canDepositMoney;
+    public double lastPayment;
 
 
-    public Account(String accountName, String accountNumber, int credit, int money, boolean canTransferMoney, boolean canDepositMoney) {
+    public Account(String accountName, String accountNumber, int credit, int money, boolean canTransferMoney, boolean canDepositMoney, double lastPayment) {
         this.accountName = accountName;
         this.accountNumber = accountNumber;
         this.credit = credit;
         this.money = money;
         this.canTransferMoney = canTransferMoney;
         this.canDepositMoney = canDepositMoney;
+        this.lastPayment = lastPayment;
     }
 
     public String getAccountName() {
@@ -71,9 +73,16 @@ public class Account implements Serializable {
         this.canDepositMoney = canDepositMoney;
     }
 
+    public double getLastPayment() {
+        return lastPayment;
+    }
+
+    public void setLastPayment(double lastPayment) {
+        this.lastPayment = lastPayment;
+    }
+
     @Override
     public String toString() {
         return accountName;
     }
-
 }

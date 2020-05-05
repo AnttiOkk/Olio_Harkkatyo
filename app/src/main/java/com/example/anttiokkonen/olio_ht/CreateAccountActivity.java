@@ -42,7 +42,7 @@ public class CreateAccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String textContent = accountName.getText().toString();
-                bank.getUser().addAccount(new Account(textContent, "FI 1337 5678 90", 100, 500, true, true));
+                bank.getUser().addAccount(new Account(textContent, "FI 1337 5678 90", 100, 500, true, true,0));
             }
         });
         button6 = (Button) findViewById(R.id.button6);

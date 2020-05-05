@@ -51,7 +51,12 @@ public class NewPaymentActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Account account1 = (Account) parent.getSelectedItem();
-                displayAccountData(account1);
+                if (account1.getCanTransferMoney() == true) {
+                    displayAccountData(account1);
+                }
+                else {
+                    displayError1(account1);
+                }
             }
 
             @Override
@@ -67,9 +72,13 @@ public class NewPaymentActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Account account2 = (Account) parent.getSelectedItem();
-                displayAccountData(account2);
+                if (account2.getCanTransferMoney() == true) {
+                    displayAccountData(account2);
+                }
+                else {
+                    displayError2(account2);
+                }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
@@ -86,10 +95,13 @@ public class NewPaymentActivity extends AppCompatActivity {
                 Account acc1 = (Account) spinner.getSelectedItem();
                 Account acc2 = (Account) spinner2.getSelectedItem();
 
-
                 if (acc2.getMoney() > ammountMoney2) {
                     acc1.setMoney((int) (acc1.getMoney()+ammountMoney2));
                     acc2.setMoney((int) (acc2.getMoney()-ammountMoney2));
+
+                    acc1.setLastPayment(-ammountMoney2);
+                    acc2.setLastPayment(+ammountMoney2);
+
                     displayAccountDataWhenMoneyAdded(acc1);
                 }
                 else {
@@ -105,7 +117,6 @@ public class NewPaymentActivity extends AppCompatActivity {
                 openActivityTransactions();
             }
         });
-
     }
 
     // MAINACTIVITYN AVAAMINEN
@@ -137,19 +148,29 @@ public class NewPaymentActivity extends AppCompatActivity {
         int money = account.getMoney();
         final double ammountMoney3 = Double.parseDouble(ammountMoney1.getText().toString());
 
-
         String accountData = "TILILLE: " + accountName + "\nTILILLE LISÄTTIIN: " + ammountMoney3+"€"+ "\nTILILLÄ RAHAA: "+ money+"€";
         Toast.makeText(this, accountData, Toast.LENGTH_LONG).show();
         }
 
-    // RAHAN LISÄYS JA PÄIVITETTYJEN TIETOJEN PÄIVITTÄMINEN JOS ONNISTUU
+    // RAHAN LISÄYS JA PÄIVITETTYJEN TIETOJEN PÄIVITTÄMINEN JOS EI ONNISTU
     private void displayErrorMessege(Account account) {
         String accountName = account.getAccountName();
         int money = account.getMoney();
         final double ammountMoney3 = Double.parseDouble(ammountMoney1.getText().toString());
 
+        String accountData = "ERROR: Tilille " + accountName + " ei pystytty \nsiirtämään "+ ammountMoney3+ "€, koska \ntoisella tilillä ei riittänyt kate.";
+        Toast.makeText(this, accountData, Toast.LENGTH_LONG).show();
+    }
+    private void displayError1(Account account) {
+        String accountName = account.getAccountName();
 
-        String accountData = "TILILLE " + accountName + "EI PYSTYTTY \nSIIRTÄMÄÄN "+ ammountMoney3+ "€, \nKOSKA TOISELLA TTILILLÄ EI \nRIITTÄNYT KATE.";
+        String accountData = "ERROR: VÄÄRÄ VALINTA. \n" + "Tilille " +accountName+ " ei voida lisätä rahaa.";
+        Toast.makeText(this, accountData, Toast.LENGTH_LONG).show();
+    }
+    private void displayError2(Account account) {
+        String accountName = account.getAccountName();
+
+        String accountData = "ERROR: VÄÄRÄ VALINTA. \n" + "Tililtä " +accountName+ " ei voida siirtää rahaa.";
         Toast.makeText(this, accountData, Toast.LENGTH_LONG).show();
     }
 

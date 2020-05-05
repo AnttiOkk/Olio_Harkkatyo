@@ -14,4 +14,7 @@
     <string name="textview21">TextView21</string>
     <string name="textview22">TextView22</string>
     <string name="textview23">TextView23</string>
+    <string name="luo_tili">Luo tili</string>
+    <string name="asetukset">Asetukset</string>
+    <string name="uusi_maksu_tilitapahtumat"><![CDATA[Uusi Maksu & Tilitapahtumat]]></string>
 </resources>
