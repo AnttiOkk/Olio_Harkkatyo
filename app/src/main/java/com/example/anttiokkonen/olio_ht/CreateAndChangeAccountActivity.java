@@ -35,10 +35,10 @@ public class CreateAndChangeAccountActivity extends AppCompatActivity {
             accountNumber.append(account.getAccountNumber());
         }
 
-        final Switch switch1 = (Switch) findViewById(R.id.switch1);
+        final Switch switch1 = (Switch) findViewById(R.id.switch2);
         switch1.setChecked(account.getCanDepositMoney());
 
-        final Switch switch2 = (Switch) findViewById(R.id.switch2);
+        final Switch switch2 = (Switch) findViewById(R.id.switch1);
         switch2.setChecked(account.getCanTransferMoney());
 
         switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

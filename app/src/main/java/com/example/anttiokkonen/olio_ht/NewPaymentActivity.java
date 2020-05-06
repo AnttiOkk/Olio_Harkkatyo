@@ -17,11 +17,14 @@ public class NewPaymentActivity extends AppCompatActivity {
     private Button button1;
     private Button button7;
     private Button button8;
+    private Button button10;
     private Bank bank = Bank.getInstance();
     private Spinner spinner;
     private Spinner spinner2;
+    private Spinner spinner3;
     Account account;
     private EditText ammountMoney1;
+    private EditText amountMoney1;
 
 
     @Override
@@ -65,14 +68,13 @@ public class NewPaymentActivity extends AppCompatActivity {
         });
 
         // TILI, JOSTA HALUAT SIIRTÄÄ RAHAA
-        // NÄYTTÄÄ TILIT JOISSA SWITCH1 ASENTO = TRUE, EI NÄYTÄ TILEJÄ, JOISSA SWITCH1 = FALSE
         spinner2 = findViewById(R.id.spinner3);
         spinner2.setAdapter(adapter);
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Account account2 = (Account) parent.getSelectedItem();
-                if (account2.getCanTransferMoney() == true) {
+                if (account2.getCanDepositMoney() == true) {
                     displayAccountData(account2);
                 }
                 else {
@@ -83,6 +85,27 @@ public class NewPaymentActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+
+        // TILI, JOLLE HALUAT LISÄÄ RAHAA
+        spinner3 = findViewById(R.id.spinner4);
+        spinner3.setAdapter(adapter);
+        spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Account account2 = (Account) parent.getSelectedItem();
+                if (account2.getCanTransferMoney() == true) {
+                    displayAccountData(account2);
+                }
+                else {
+                    displayError1(account2);
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+
 
         // RAHAN SIIRTÄMINEN TILIEN VÄLILLÄ
         button7 = (Button) findViewById(R.id.button7);
@@ -109,6 +132,21 @@ public class NewPaymentActivity extends AppCompatActivity {
                 }
             }
         });
+        
+        // RAHAN SIIRTÄMINEN TILILLE
+        button10 = (Button) findViewById(R.id.button10);
+        button10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                amountMoney1 = (EditText) findViewById(R.id.ammountMoney2);
+                final double amountMoney3 = Double.parseDouble(amountMoney1.getText().toString());
+
+                Account acc3 = (Account) spinner3.getSelectedItem();
+
+                acc3.setLastPayment(amountMoney3);
+                displayAccountDataWhenMoneyAdded2(acc3);
+                }
+            });
 
         button8 = (Button) findViewById(R.id.button8);
         button8.setOnClickListener(new View.OnClickListener() {
@@ -151,6 +189,16 @@ public class NewPaymentActivity extends AppCompatActivity {
         String accountData = "TILILLE: " + accountName + "\nTILILLE LISÄTTIIN: " + ammountMoney3+"€"+ "\nTILILLÄ RAHAA: "+ money+"€";
         Toast.makeText(this, accountData, Toast.LENGTH_LONG).show();
         }
+
+    // RAHAN LISÄYS JA PÄIVITETTYJEN TIETOJEN PÄIVITTÄMINEN JOS ONNISTUU
+    private void displayAccountDataWhenMoneyAdded2(Account account) {
+        String accountName = account.getAccountName();
+        int money = account.getMoney();
+        final double amountMoney3 = Double.parseDouble(amountMoney1.getText().toString());
+
+        String accountData = "TILILLE: " + accountName + "\nTILILLE LISÄTTIIN: " + amountMoney3+"€"+ "\nTILILLÄ RAHAA: "+ money+"€";
+        Toast.makeText(this, accountData, Toast.LENGTH_LONG).show();
+    }
 
     // RAHAN LISÄYS JA PÄIVITETTYJEN TIETOJEN PÄIVITTÄMINEN JOS EI ONNISTU
     private void displayErrorMessege(Account account) {
