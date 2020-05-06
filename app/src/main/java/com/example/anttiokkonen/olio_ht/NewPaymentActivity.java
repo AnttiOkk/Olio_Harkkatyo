@@ -54,6 +54,8 @@ public class NewPaymentActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Account account1 = (Account) parent.getSelectedItem();
+
+                // EHTO, ETTÄ TILILLE VOIDAAN SIIRTÄÄ RAHAA
                 if (account1.getCanTransferMoney() == true) {
                     displayAccountData(account1);
                 }
@@ -74,6 +76,8 @@ public class NewPaymentActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Account account2 = (Account) parent.getSelectedItem();
+
+                // EHTO ETTÄ TILILTÄ VOIDAAN SIIRTÄÄ RAHAA
                 if (account2.getCanDepositMoney() == true) {
                     displayAccountData(account2);
                 }
@@ -93,6 +97,8 @@ public class NewPaymentActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Account account2 = (Account) parent.getSelectedItem();
+
+                // EHTO, ETTÄ TILILLE VOIDAAN SIIRTÄÄ RAHAA
                 if (account2.getCanTransferMoney() == true) {
                     displayAccountData(account2);
                 }
@@ -118,10 +124,12 @@ public class NewPaymentActivity extends AppCompatActivity {
                 Account acc1 = (Account) spinner.getSelectedItem();
                 Account acc2 = (Account) spinner2.getSelectedItem();
 
-                if (acc2.getMoney() > ammountMoney2) {
+                // EHTO, ETTÄ TILILLÄ JOSTA SIIRRETÄÄN RAHAA ON TARPEEKSI KATETTA
+                if (acc2.getMoney() >= ammountMoney2) {
                     acc1.setMoney((int) (acc1.getMoney()+ammountMoney2));
                     acc2.setMoney((int) (acc2.getMoney()-ammountMoney2));
 
+                    // VIIMEISIMMÄN TILITAPAHTUMAN TALTEENOTTO
                     acc1.setLastPayment(ammountMoney2);
                     acc2.setLastPayment(-ammountMoney2);
 
@@ -132,7 +140,7 @@ public class NewPaymentActivity extends AppCompatActivity {
                 }
             }
         });
-        
+
         // RAHAN SIIRTÄMINEN TILILLE
         button10 = (Button) findViewById(R.id.button10);
         button10.setOnClickListener(new View.OnClickListener() {
@@ -144,10 +152,12 @@ public class NewPaymentActivity extends AppCompatActivity {
                 Account acc3 = (Account) spinner3.getSelectedItem();
 
                 acc3.setLastPayment(amountMoney3);
+                acc3.setMoney((int) (acc3.getMoney()+amountMoney3));
                 displayAccountDataWhenMoneyAdded2(acc3);
                 }
             });
 
+        // TRANSACTIONS ACTIVITYN AVAAMINEN
         button8 = (Button) findViewById(R.id.button8);
         button8.setOnClickListener(new View.OnClickListener() {
             @Override

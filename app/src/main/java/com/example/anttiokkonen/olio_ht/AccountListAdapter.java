@@ -30,9 +30,6 @@ public class AccountListAdapter extends ArrayAdapter<Account> {
         int raha = getItem(position).getMoney();
         double viimeinenTilitapahtuma = getItem(position).getLastPayment();
 
-
-        //Account account = new Account(tilinnimi, tilinro, raha, credit);
-
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 
