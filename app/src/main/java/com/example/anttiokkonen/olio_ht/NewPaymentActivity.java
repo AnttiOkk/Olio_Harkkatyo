@@ -11,6 +11,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.SQLOutput;
 
 public class NewPaymentActivity extends AppCompatActivity {
@@ -18,13 +24,19 @@ public class NewPaymentActivity extends AppCompatActivity {
     private Button button7;
     private Button button8;
     private Button button10;
+
     private Bank bank = Bank.getInstance();
     private Spinner spinner;
     private Spinner spinner2;
     private Spinner spinner3;
     Account account;
+    Card card;
+
+
     private EditText ammountMoney1;
     private EditText amountMoney1;
+
+    private static final String FILE_NAME = "transactions.txt";
 
 
     @Override
@@ -32,6 +44,7 @@ public class NewPaymentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_payment);
         account = (Account) getIntent().getSerializableExtra("account");
+        //card = (Card) getIntent().getSerializableExtra("card");
 
         button1 = (Button) findViewById(R.id.etusivu2);
         button1.setOnClickListener(new View.OnClickListener() {
@@ -41,7 +54,6 @@ public class NewPaymentActivity extends AppCompatActivity {
             }
         });
 
-        
         // TILI JOHON HALUAT LAITTAA RAHAA
         // NÄYTTÄÄ TILIT JOISSA ON SWITCH2 ASENTO = TRUE, EI NÄYTÄ TILEJÄ, JOISSA SWITCH2 = FALSE
         spinner = findViewById(R.id.spinner2);
@@ -134,6 +146,8 @@ public class NewPaymentActivity extends AppCompatActivity {
                     acc2.setLastPayment(-ammountMoney2);
 
                     displayAccountDataWhenMoneyAdded(acc1);
+                    save2(ammountMoney1);
+
                 }
                 else {
                     displayErrorMessege(acc1);
@@ -154,6 +168,9 @@ public class NewPaymentActivity extends AppCompatActivity {
                 acc3.setLastPayment(amountMoney3);
                 acc3.setMoney((int) (acc3.getMoney()+amountMoney3));
                 displayAccountDataWhenMoneyAdded2(acc3);
+
+                save(amountMoney1);
+                //load(amountMoney1);
                 }
             });
 
@@ -174,9 +191,17 @@ public class NewPaymentActivity extends AppCompatActivity {
     }
 
     // TRANSACTIONSACTIVITYN AVAAAMINEN
-    public void openActivityTransactions() {
+    /*public void openActivityTransactions() {
         Intent intent2 = new Intent(this, TransactionsActivity.class);
         intent2.putExtra("account", account);
+        intent2.putExtra("card", card);
+        startActivity(intent2);
+    }*/
+    // TRANSACTIONSACTIVITYN AVAAAMINEN
+    public void openActivityTransactions() {
+        Intent intent2 = new Intent(this, Transactions2Activity.class);
+        intent2.putExtra("account", account);
+        intent2.putExtra("card", card);
         startActivity(intent2);
     }
 
@@ -196,9 +221,9 @@ public class NewPaymentActivity extends AppCompatActivity {
         int money = account.getMoney();
         final double ammountMoney3 = Double.parseDouble(ammountMoney1.getText().toString());
 
-        String accountData = "TILILLE: " + accountName + "\nTILILLE LISÄTTIIN: " + ammountMoney3+"€"+ "\nTILILLÄ RAHAA: "+ money+"€";
+        String accountData = "TILILLE: " + accountName + "\nTILILLE LISÄTTIIN: " + ammountMoney3 + "€" + "\nTILILLÄ RAHAA: " + money + "€";
         Toast.makeText(this, accountData, Toast.LENGTH_LONG).show();
-        }
+    }
 
     // RAHAN LISÄYS JA PÄIVITETTYJEN TIETOJEN PÄIVITTÄMINEN JOS ONNISTUU
     private void displayAccountDataWhenMoneyAdded2(Account account) {
@@ -232,5 +257,107 @@ public class NewPaymentActivity extends AppCompatActivity {
         Toast.makeText(this, accountData, Toast.LENGTH_LONG).show();
     }
 
+    public void save(View v) {
+        String text = amountMoney1.getText().toString();
+        Account acc3 = (Account) spinner3.getSelectedItem();
+        String money3 = String.valueOf(acc3.getMoney());
+        FileOutputStream fos = null;
+        try {
+            fos = openFileOutput(FILE_NAME, MODE_PRIVATE | MODE_APPEND);
+            fos.write(acc3.getAccountName().getBytes());
+            fos.write(": +".getBytes());
+            fos.write(text.getBytes());
+            fos.write("€".getBytes());
+            fos.write("   Tot.= ".getBytes());
+            fos.write(money3.getBytes());
+            fos.write("€".getBytes());
+            fos.write("\n".getBytes());
+            amountMoney1.getText().clear();
+        }catch (FileNotFoundException e) {
+             e.printStackTrace();
+        }catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                }catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void save2(View v) {
+        String text = ammountMoney1.getText().toString();
+        // tili, jolle lisätään rahaa
+        Account acc1 = (Account) spinner.getSelectedItem();
+        String money1 = String.valueOf(acc1.getMoney());
+
+        // tili, josta otetaan rahaa
+        Account acc2 = (Account) spinner2.getSelectedItem();
+        String money2 = String.valueOf(acc2.getMoney());
+
+        FileOutputStream fos = null;
+        try {
+            fos = openFileOutput(FILE_NAME, MODE_PRIVATE | MODE_APPEND);
+            fos.write(acc1.getAccountName().getBytes());
+            fos.write(": +".getBytes());
+            fos.write(text.getBytes());
+            fos.write("€".getBytes());
+            fos.write("   Tot.= ".getBytes());
+            fos.write(money1.getBytes());
+            fos.write("€".getBytes());
+            fos.write("\n".getBytes());
+            fos.write(acc2.getAccountName().getBytes());
+            fos.write(": -".getBytes());
+            fos.write(text.getBytes());
+            fos.write("€".getBytes());
+            fos.write("   Tot.= ".getBytes());
+            fos.write(money2.getBytes());
+            fos.write("€".getBytes());
+            fos.write("\n".getBytes());
+            ammountMoney1.getText().clear();
+        }catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                }catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void load(View v) {
+        FileInputStream fis = null;
+        try {
+            fis = openFileInput(FILE_NAME);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader br = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            String text;
+
+            while ((text = br.readLine()) != null){
+                sb.append(text).append("\n");
+            } ammountMoney1.setText(sb.toString());
+        }catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            if (fis != null) {
+                try {
+                    fis.close();
+                }catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 }
 

@@ -8,12 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
 public class AccountListAdapter extends ArrayAdapter<Account> {
     private Context mContext;
     int mResource;
+    private static final String FILE_NAME = "example.txt";
 
 
     public AccountListAdapter(Context context, int resource, ArrayList<Account> accounts) {
@@ -30,6 +37,8 @@ public class AccountListAdapter extends ArrayAdapter<Account> {
         int raha = getItem(position).getMoney();
         double viimeinenTilitapahtuma = getItem(position).getLastPayment();
 
+        //String pankkikortti = getItem(position).card.getCardName();
+
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 
@@ -41,6 +50,7 @@ public class AccountListAdapter extends ArrayAdapter<Account> {
 
         tvAccountName.setText(tilinnimi);
         tvAccountNumber.setText(tilinro);
+        //tvAccountNumber.setText(pankkikortti);
         tvCredit.setText(Double.toString(viimeinenTilitapahtuma));
         tvMoney.setText(Integer.toString(raha));
 

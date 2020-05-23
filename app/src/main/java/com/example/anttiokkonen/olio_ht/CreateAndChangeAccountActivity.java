@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 
 public class CreateAndChangeAccountActivity extends AppCompatActivity {
@@ -16,7 +19,11 @@ public class CreateAndChangeAccountActivity extends AppCompatActivity {
     Account account;
     private TextView accountName;
     private TextView accountNumber;
+    private TextView cardname;
     private Bank bank = Bank.getInstance();
+    private Spinner spinner;
+
+    ArrayList<Card> cards;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +33,37 @@ public class CreateAndChangeAccountActivity extends AppCompatActivity {
         account = (Account) getIntent().getSerializableExtra("account");
 
         // TILIN NIMEN JA TILINUMERON TULOSTAMINEN TEXTVIEW-KENTTIIN
+
+       // Account acc111 = (Account) spinner.getSelectedItem();
+
         accountName = findViewById(R.id.textView8);
         accountNumber = findViewById(R.id.textView10);
+        cardname = findViewById(R.id.textView18);
+
+        Spinner spinner = findViewById(R.id.spinner);
+
+        //int index1 = spinner.getSelectedItemPosition();
+
+        //int index = cards.get(cards.size()-1);
+
+        //int size = (int) cards.get(cards.size()-1);
+        //System.out.println(size);
 
         // EHTO
         if (account != null) {
+
+            //accountName.append(acc111.getAccountName());
             accountName.append(account.getAccountName());
             accountNumber.append(account.getAccountNumber());
+            //cardname.setText("Tiliin ei ole liitetty pankkikorttia.");
+
+            if (account.getCards().isEmpty()) {
+                cardname.setText("Tiliin ei ole liitetty pankkikorttia.");
+            }else {
+                 cardname.setText("Tiliin liitetty pankkikortti:    " + account.getCards().get(0).getCardName() + "\n Kortin numero: " + account.getCards().get(0).getCardType() + "\n kortin tyyppi: " + account.getCards().get(0).getCardNumber() + "\n Kortilla luottoa: "+ account.getCards().get(0).getCardCredit());
+            }
+            //cardname.append(bank.getUser().getAccounts().get(index1).getCards().get(0).getCardName());
+            //cardname.append(acc111.getCards().get(0).getCardName());
         }
 
         final Switch switch1 = (Switch) findViewById(R.id.switch2);

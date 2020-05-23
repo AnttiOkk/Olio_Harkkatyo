@@ -7,6 +7,7 @@ import java.io.IOException ;
 import java.util.List;
 
 public class Account implements Serializable {
+
     public String accountName;
     public String accountNumber;
     public int credit;
@@ -15,8 +16,11 @@ public class Account implements Serializable {
     public Boolean canDepositMoney;
     public double lastPayment;
 
+    private ArrayList<Card> cards = new ArrayList<>();
+    int size = cards.size();
 
     public Account(String accountName, String accountNumber, int credit, int money, boolean canTransferMoney, boolean canDepositMoney, double lastPayment) {
+
         this.accountName = accountName;
         this.accountNumber = accountNumber;
         this.credit = credit;
@@ -24,6 +28,7 @@ public class Account implements Serializable {
         this.canTransferMoney = canTransferMoney;
         this.canDepositMoney = canDepositMoney;
         this.lastPayment = lastPayment;
+
     }
 
     public String getAccountName() {
@@ -57,6 +62,7 @@ public class Account implements Serializable {
     public void setMoney(int money) {
         this.money = money;
     }
+
     public Boolean getCanTransferMoney() {
         return canTransferMoney;
     }
@@ -79,6 +85,27 @@ public class Account implements Serializable {
 
     public void setLastPayment(double lastPayment) {
         this.lastPayment = lastPayment;
+    }
+
+    /*public Card getPrimaryCard() {
+        return this.cards.get(0);
+    }
+
+    public ArrayList<Card> getCards() {
+        return cards;
+    }
+
+    public void setCards(String cardName, String cardNumber) {
+        Card c = new Card(cardName, cardNumber);
+        cards.add(c);
+    }*/
+
+    public void addCard(Card c) {
+        cards.add(c);
+    }
+
+    public ArrayList<Card> getCards() {
+        return cards;
     }
 
     @Override

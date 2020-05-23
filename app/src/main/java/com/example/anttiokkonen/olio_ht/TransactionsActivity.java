@@ -17,6 +17,7 @@ public class TransactionsActivity extends AppCompatActivity {
     ListView listView;
     private Bank bank = Bank.getInstance();
     Account account;
+    Card card;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class TransactionsActivity extends AppCompatActivity {
         listView= (ListView) findViewById(R.id.listview);
 
         account = (Account) getIntent().getSerializableExtra("account");
+        card = (Card) getIntent().getSerializableExtra("card");
 
         AccountListAdapter adapter = new AccountListAdapter(this, R.layout.adapter_view_layout, bank.getUser().getAccounts());
         listView.setAdapter(adapter);
